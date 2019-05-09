@@ -51,6 +51,14 @@ class Instructor extends Person {
 	grade(student, subject) {
 		console.log(`${student.name} receives a perfect score on ${subject}`);
 	}
+
+	updateGrade(student) {
+		const randomNumber = Math.floor(Math.random() * (100 - 1 + 1) + 1);
+		if (student.grade < 70) {
+			student.grade = randomNumber;
+			console.log(`${student.name} grade has been updated.`);
+		}
+	}
 }
 
 /**
@@ -72,6 +80,7 @@ class Student extends Person {
 		this.previousBackground = previousBackground;
 		this.className = className;
 		this.favSubjects = favSubjects;
+		this.grade = Math.floor(Math.random() * 100 + 1);
 	}
 
 	listsSubjects() {
@@ -86,6 +95,14 @@ class Student extends Person {
 
 	sprintChallenge(subject) {
 		console.log(`${this.name} has begun sprint challenge on ${subject}`);
+	}
+
+	graduate() {
+		if (this.grade > 70) {
+			console.log(`${this.name} has successfully graduated from Lambda School.`);
+		} else {
+			console.log(`Kindly re-asses ${this.name} on flex to increase their score.`);
+		}
 	}
 }
 
@@ -207,3 +224,7 @@ console.log(maxim.debugsCode(yemi, 'Javascript IV'));
 
 console.log(john.standUp());
 console.log(john.debugsCode(jane, 'Javascript III'));
+
+// Stretch goal test
+console.log(maxim.updateGrade(yemi));
+console.log(yemi.graduate());
